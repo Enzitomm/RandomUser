@@ -6,7 +6,34 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<div class="container">
+  <h1>Lista de Usuarios</h1>
 
+  <input
+    type="text"
+    [(ngModel)]="search"
+    placeholder="Buscar por nombre..."
+  />
+
+  <div *ngFor="let user of filteredUsers" class="card">
+    <img [src]="user.picture.medium" alt="Foto de {{ user.name.first }}" />
+    <div class="info">
+      <h3>{{ user.name.first }} {{ user.name.last }}</h3>
+      <p>Email: {{ user.email }}</p>
+      <p>País: {{ user.location.country }}</p>
+    </div>
+  </div>
+</div>
+
+<h2>Listado de Usuarios</h2>
+<input [(ngModel)]="search" placeholder="Buscar usuario..." />
+
+<ul>
+  <li *ngFor="let u of filtered">
+    {{u.name.first}} {{u.name.last}} – {{u.email}}
+  </li>
+</ul>
+<p *ngIf="!filteredUsers.length">No se encontraron usuarios.</p>
 <style>
   :host {
     --bright-blue: oklch(51.01% 0.274 263.83);
@@ -229,7 +256,7 @@
           <clipPath id="a"><path fill="#fff" d="M0 0h982v239H0z" /></clipPath>
         </defs>
       </svg>
-      <h1>Hello, {{ title }}</h1>
+      <h1>Hello, {{ AppComponent }}</h1>
       <p>Congratulations! Your app is running. 🎉</p>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
